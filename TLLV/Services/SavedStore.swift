@@ -25,6 +25,12 @@ final class SavedStore {
     private let storageKey = "tllv.saved.v1"
 
     init() {
+        if DemoMode.isEnabled {
+            favourites = DemoMode.favouriteIDs
+            lists = [SavedList(name: "Date night", placeIDs: DemoMode.dateNightIDs),
+                     SavedList(name: "Birthday ideas", placeIDs: Array(DemoMode.favouriteIDs.suffix(2)))]
+            return
+        }
         if let data = UserDefaults.standard.data(forKey: storageKey),
            let snapshot = try? JSONDecoder().decode(Snapshot.self, from: data) {
             favourites = snapshot.favourites
@@ -33,6 +39,7 @@ final class SavedStore {
     }
 
     private func persist() {
+        guard !DemoMode.isEnabled else { return }
         let snapshot = Snapshot(favourites: favourites, lists: lists)
         if let data = try? JSONEncoder().encode(snapshot) {
             UserDefaults.standard.set(data, forKey: storageKey)

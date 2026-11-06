@@ -8,7 +8,18 @@
 
 /* Begin PBXFileReference section */
 		7A1100000000000000000001 /* TLLV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLLV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A1100000000000000000021 /* TLLVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TLLVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXContainerItemProxy section */
+		7A1100000000000000000029 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A1100000000000000000009 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A1100000000000000000006;
+			remoteInfo = TLLV;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		7A1100000000000000000002 /* TLLV */ = {
@@ -16,10 +27,22 @@
 			path = TLLV;
 			sourceTree = "<group>";
 		};
+		7A1100000000000000000022 /* TLLVUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TLLVUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7A1100000000000000000003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A1100000000000000000023 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				7A1100000000000000000002 /* TLLV */,
+				7A1100000000000000000022 /* TLLVUITests */,
 				7A1100000000000000000005 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				7A1100000000000000000001 /* TLLV.app */,
+				7A1100000000000000000021 /* TLLVUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = 7A1100000000000000000001 /* TLLV.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7A1100000000000000000026 /* TLLVUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A110000000000000000002C /* Build configuration list for PBXNativeTarget "TLLVUITests" */;
+			buildPhases = (
+				7A1100000000000000000024 /* Sources */,
+				7A1100000000000000000023 /* Frameworks */,
+				7A1100000000000000000025 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A110000000000000000002A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				7A1100000000000000000022 /* TLLVUITests */,
+			);
+			name = TLLVUITests;
+			packageProductDependencies = (
+			);
+			productName = TLLVUITests;
+			productReference = 7A1100000000000000000021 /* TLLVUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +130,10 @@
 				TargetAttributes = {
 					7A1100000000000000000006 = {
 						CreatedOnToolsVersion = 16.0;
+					};
+					7A1100000000000000000026 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 7A1100000000000000000006;
 					};
 				};
 			};
@@ -100,12 +152,20 @@
 			projectRoot = "";
 			targets = (
 				7A1100000000000000000006 /* TLLV */,
+				7A1100000000000000000026 /* TLLVUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7A1100000000000000000008 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A1100000000000000000025 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +182,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A1100000000000000000024 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A110000000000000000002A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A1100000000000000000006 /* TLLV */;
+			targetProxy = 7A1100000000000000000029 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7A110000000000000000000C /* Debug */ = {
@@ -246,6 +321,42 @@
 			};
 			name = Release;
 		};
+		7A110000000000000000002D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thelittlelondonvegan.app.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TLLV;
+			};
+			name = Debug;
+		};
+		7A110000000000000000002E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thelittlelondonvegan.app.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TLLV;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -263,6 +374,15 @@
 			buildConfigurations = (
 				7A110000000000000000000E /* Debug */,
 				7A110000000000000000000F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A110000000000000000002C /* Build configuration list for PBXNativeTarget "TLLVUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A110000000000000000002D /* Debug */,
+				7A110000000000000000002E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

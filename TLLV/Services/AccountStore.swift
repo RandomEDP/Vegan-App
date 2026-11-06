@@ -80,6 +80,12 @@ final class AccountStore {
     private let membershipKey = "tllv.membership.v1"
 
     init() {
+        if DemoMode.isEnabled {
+            membership = .premium
+            name = "Demo Member"
+            email = "demo@thelittlelondonvegan.com"
+            return
+        }
         // Show the last known state straight away; `refresh()` confirms it.
         if let saved = UserDefaults.standard.string(forKey: membershipKey), let value = Membership(rawValue: saved) {
             membership = value
@@ -98,6 +104,7 @@ final class AccountStore {
     // MARK: Session
 
     func refresh() async {
+        guard !DemoMode.isEnabled else { return }
         isLoading = true
         defer { isLoading = false }
         do {
