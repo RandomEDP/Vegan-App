@@ -61,7 +61,7 @@ final class DemoWalkthroughTests: XCTestCase {
                 if app.buttons["Cancel"].exists { app.buttons["Cancel"].tap() }
                 wait(1)
             }
-            segment(0).tap()
+            if segment(0).exists { segment(0).tap() }
             wait(2)
         }
         let filters = app.navigationBars.buttons["Filters"]
@@ -90,7 +90,10 @@ final class DemoWalkthroughTests: XCTestCase {
             wait(2.5)
             app.swipeUp(velocity: .slow)
             wait(2)
-            segment(0).tap()
+            app.swipeDown(velocity: .fast)
+            app.swipeDown(velocity: .fast)
+            wait(1)
+            if segment(0).exists { segment(0).tap() }
             wait(1)
         }
 
