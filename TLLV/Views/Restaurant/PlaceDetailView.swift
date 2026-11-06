@@ -142,7 +142,7 @@ struct PlaceDetailView: View {
                 .foregroundStyle(.secondary)
             FlowLayout(spacing: 6) {
                 VeganBadge(place: place)
-                if let price = place.price, !price.isEmpty { TagLabel(text: price, symbol: "sterlingsign") }
+                if let price = place.price, !price.isEmpty { TagLabel(text: price) }
                 if place.recommended { TagLabel(text: "Clare recommends", symbol: "star.fill") }
                 if let open = place.isOpen() {
                     TagLabel(text: open ? "Open now" : "Closed now", symbol: "clock")
