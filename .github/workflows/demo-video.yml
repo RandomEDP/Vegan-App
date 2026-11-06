@@ -65,8 +65,10 @@ jobs:
           REC=$!
           sleep 2
           set +e
-          xcodebuild test-without-building \
+          mkdir -p shots
+          TEST_RUNNER_SHOT_DIR="$PWD/shots" xcodebuild test-without-building \
             -project TLLV.xcodeproj -scheme TLLV \
+            -resultBundlePath result.xcresult \
             -destination "platform=iOS Simulator,id=$UDID" \
             -derivedDataPath build \
             -only-testing:TLLVUITests/DemoWalkthroughTests/testDemoWalkthrough \
@@ -78,6 +80,15 @@ jobs:
           tail -40 test.log
           ls -la demo-raw.mp4
           exit $STATUS
+
+      - name: Collect screenshots
+        if: always()
+        run: |
+          ls shots | head -50 || true
+          if [ -z "$(ls -A shots 2>/dev/null)" ] && [ -d result.xcresult ]; then
+            xcrun xcresulttool export attachments --path result.xcresult --output-path shots || true
+            ls shots | head -50 || true
+          fi
 
       - name: Compress video
         if: always()
@@ -96,5 +107,6 @@ jobs:
           name: TLLV-demo-video
           path: |
             TLLV-demo.mp4
+            shots/
             test.log
             build.log
