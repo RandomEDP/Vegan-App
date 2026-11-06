@@ -48,9 +48,8 @@ final class DemoWalkthroughTests: XCTestCase {
 
         // Explore: map, then list and search
         app.tabBars.buttons["Explore"].tap()
-        app.tap() // lets the interruption monitor answer a location prompt
         wait(4)
-        let list = app.segmentedControls.buttons["List"]
+        let list = segment(1)
         if list.waitForExistence(timeout: 5) {
             list.tap()
             wait(2.5)
@@ -62,7 +61,7 @@ final class DemoWalkthroughTests: XCTestCase {
                 if app.buttons["Cancel"].exists { app.buttons["Cancel"].tap() }
                 wait(1)
             }
-            app.segmentedControls.buttons["Map"].tap()
+            segment(0).tap()
             wait(2)
         }
         let filters = app.navigationBars.buttons["Filters"]
@@ -85,13 +84,13 @@ final class DemoWalkthroughTests: XCTestCase {
             wait(2)
             goBack()
         }
-        let travel = app.segmentedControls.buttons["Travel"]
+        let travel = segment(1)
         if travel.exists {
             travel.tap()
             wait(2.5)
             app.swipeUp(velocity: .slow)
             wait(2)
-            app.segmentedControls.buttons["London"].tap()
+            segment(0).tap()
             wait(1)
         }
 
@@ -133,6 +132,12 @@ final class DemoWalkthroughTests: XCTestCase {
             }
         }
         return false
+    }
+
+    /// Segment buttons in the first segmented control. SwiftUI labels them from
+    /// their SF Symbols ("Show Map"), so match by position instead of by name.
+    private func segment(_ index: Int) -> XCUIElement {
+        app.segmentedControls.firstMatch.buttons.element(boundBy: index)
     }
 
     private func goBack() {
